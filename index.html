@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EquiAI - AI-Powered Stock Advisor</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h2>EquiAI</h2>
+                <span class="nav-subtitle">AI Stock Advisor</span>
+            </div>
+            <div class="nav-menu">
+                <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+                <button class="nav-btn" data-section="portfolio">Portfolio</button>
+                <button class="nav-btn" data-section="ai-chat">AI Chat</button>
+            </div>
+        </nav>
+
+        <!-- Dashboard Section -->
+        <main id="dashboard" class="section active">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Dashboard</h1>
+                    <p class="section-subtitle">Your portfolio overview and market insights</p>
+                </div>
+                <!-- Portfolio Summary -->
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="summary-icon">📊</div>
+                        <div class="summary-content">
+                            <span class="summary-label">Portfolio Value</span>
+                            <span class="summary-value" id="portfolio-value">$0.00</span>
+                            <span class="summary-change positive" id="portfolio-change">+0.00%</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon">📈</div>
+                        <div class="summary-content">
+                            <span class="summary-label">Today’s Gain/Loss</span>
+                            <span class="summary-value" id="today-change">$0.00</span>
+                            <span class="summary-change positive" id="today-change-percent">+0.00%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stocks container -->
+                <div id="stocks-container" class="stocks-container"></div>
+            </div>
+        </main>
+
+        <!-- Portfolio Section -->
+        <main id="portfolio" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Portfolio</h1>
+                    <p class="section-subtitle">Manage your stock holdings</p>
+                </div>
+                <form id="portfolio-form" class="portfolio-form">
+                    <input type="text" id="stock-symbol" placeholder="Stock Symbol (e.g. AAPL)" required />
+                    <input type="number" id="stock-quantity" placeholder="Quantity" required min="1" />
+                    <input type="number" id="stock-buy-price" placeholder="Buy Price" required step="0.01" min="0" />
+                    <button type="submit">Add to Portfolio</button>
+                </form>
+                <div id="portfolio-list" class="portfolio-list"></div>
+                <canvas id="allocationChart" height="200"></canvas>
+            </div>
+        </main>
+
+        <!-- AI Chat Section -->
+        <main id="ai-chat" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>AI Chat Advisor</h1>
+                    <p class="section-subtitle">Get AI-powered stock advice</p>
+                </div>
+                <div id="chat-container" class="chat-container"></div>
+                <form id="chat-form" class="chat-form">
+                    <input type="text" id="chat-input" placeholder="Ask your stock question..." autocomplete="off" required />
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
